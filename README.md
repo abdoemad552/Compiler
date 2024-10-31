@@ -6,4 +6,5 @@ This project is a part of the the university course "Compilers Design" as an app
 The phases include building:
 - The Scanner.
 - The Parser.
+
 and more..
