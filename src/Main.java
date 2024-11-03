@@ -14,7 +14,7 @@ public class Main {
     private static final String UNKNOWN             = "unknown";
 
     public static void main(String[] args) {
-        System.out.println("Enter code (press `Ctrl` + `D` (Linux/macOS) or `Ctrl` + `Z` (Windows) to finish input):");
+        System.out.println("Enter code (press `Ctrl` + `D` (Linux/macOS) or `Ctrl` + `C` (Windows) to finish input):");
 
         StringBuilder inputCode = new StringBuilder();
         try {
