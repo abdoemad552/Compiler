@@ -25,6 +25,6 @@ class Token {
 
     @Override
     public String toString() {
-        return String.format("<%s, \"%s\">", this.name, this.value);
+        return String.format("<%s, `%s`>", this.name, this.value);
     }
 }

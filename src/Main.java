@@ -13,21 +13,27 @@ public class Main {
     private static final String WHITE_SPACE         = "whiteSpace";
     private static final String UNKNOWN             = "unknown";
 
+    private static final String EOF = "__end__";
+
     public static void main(String[] args) {
-        System.out.println("Enter code (press `Ctrl` + `D` (Linux/macOS) or `Ctrl` + `C` (Windows) to finish input):");
+        System.out.println("Enter code (enter `" + EOF + "` to finish input):");
 
         StringBuilder inputCode = new StringBuilder();
         try {
             int inputChar;
             while ((inputChar = System.in.read()) != -1) {
                 inputCode.append((char) inputChar);
+                if (
+                    inputCode.length() >= EOF.length() &&
+                    inputCode.substring(inputCode.length() - EOF.length()).equals(EOF)
+                ) break;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         Pattern pattern = TokenPattern.getAllInOnePattern();
-        Matcher matcher = pattern.matcher(inputCode.toString());
+        Matcher matcher = pattern.matcher(inputCode.substring(0, inputCode.length() - EOF.length()));
 
         List<Token> tokens = new ArrayList<>();
         while (matcher.find()) {
