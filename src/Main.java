@@ -11,6 +11,7 @@ public class Main {
     private static final String OPERATOR            = "operator";
     private static final String SPECIAL_CHARACTER   = "specialCharacter";
     private static final String WHITE_SPACE         = "whiteSpace";
+    private static final String COMMENT             = "comment";
     private static final String UNKNOWN             = "unknown";
 
     private static final String EOF = "__end__";
@@ -53,6 +54,8 @@ public class Main {
                 tokens.add(new Token(SPECIAL_CHARACTER, matcher.group(SPECIAL_CHARACTER)));
             } else if (matcher.group(WHITE_SPACE) != null) {
                 tokens.add(new Token(WHITE_SPACE, matcher.group(WHITE_SPACE)));
+            } else if (matcher.group(COMMENT) != null) {
+                tokens.add(new Token(COMMENT, matcher.group(COMMENT)));
             } else if (matcher.group(UNKNOWN) != null) {
                 tokens.add(new Token(UNKNOWN, matcher.group(UNKNOWN)));
             }

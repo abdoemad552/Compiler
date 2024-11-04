@@ -26,6 +26,9 @@ enum TokenPattern {
     WHITE_SPACE(
         "(?<whiteSpace>\\s+)"
     ),
+    COMMENT(
+        "(?<comment>//.*?$|/\\*[\\s\\S]*?\\*/)"
+    ),
     UNKNOWN(
         "(?<unknown>.+)"
     );
@@ -53,10 +56,11 @@ enum TokenPattern {
             TokenPattern.NUMERIC_LITERAL    .getPattern(),
             TokenPattern.STRING_LITERAL     .getPattern(),
             TokenPattern.CHARACTER_LITERAL  .getPattern(),
+            TokenPattern.COMMENT            .getPattern(),
             TokenPattern.OPERATOR           .getPattern(),
             TokenPattern.SPECIAL_CHARACTER  .getPattern(),
             TokenPattern.WHITE_SPACE        .getPattern(),
             TokenPattern.UNKNOWN            .getPattern()
-        ));
+        ), Pattern.MULTILINE);
     }
 }
