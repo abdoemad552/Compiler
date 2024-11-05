@@ -35,7 +35,8 @@ public class Main {
         }
 
         Pattern pattern = TokenPattern.getAllInOnePattern();
-        Matcher matcher = pattern.matcher(inputCode.substring(0, inputCode.length() - EOF.length()));
+        Matcher matcher = pattern.matcher(
+            inputCode.substring(0, inputCode.length() - EOF.length()));
 
         List<Token> tokens = new ArrayList<>();
         while (matcher.find()) {
