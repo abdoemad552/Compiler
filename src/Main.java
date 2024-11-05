@@ -8,10 +8,11 @@ public class Main {
     private static final String NUMERIC_LITERAL     = "numericLiteral";
     private static final String STRING_LITERAL      = "stringLiteral";
     private static final String CHARACTER_LITERAL   = "characterLiteral";
+    private static final String PREPROCESSOR        = "preprocessor";
+    private static final String COMMENT             = "comment";
     private static final String OPERATOR            = "operator";
     private static final String SPECIAL_CHARACTER   = "specialCharacter";
     private static final String WHITE_SPACE         = "whiteSpace";
-    private static final String COMMENT             = "comment";
     private static final String UNKNOWN             = "unknown";
 
     private static final String EOF = "__end__";
@@ -48,14 +49,16 @@ public class Main {
                 tokens.add(new Token(STRING_LITERAL, matcher.group(STRING_LITERAL)));
             } else if (matcher.group(CHARACTER_LITERAL) != null) {
                 tokens.add(new Token(CHARACTER_LITERAL, matcher.group(CHARACTER_LITERAL)));
+            } else if (matcher.group(COMMENT) != null) {
+                tokens.add(new Token(COMMENT, matcher.group(COMMENT)));
+            } else if (matcher.group(PREPROCESSOR) != null) {
+                tokens.add(new Token(PREPROCESSOR, matcher.group(PREPROCESSOR)));
             } else if (matcher.group(OPERATOR) != null) {
                 tokens.add(new Token(OPERATOR, matcher.group(OPERATOR)));
             } else if (matcher.group(SPECIAL_CHARACTER) != null) {
                 tokens.add(new Token(SPECIAL_CHARACTER, matcher.group(SPECIAL_CHARACTER)));
             } else if (matcher.group(WHITE_SPACE) != null) {
                 tokens.add(new Token(WHITE_SPACE, matcher.group(WHITE_SPACE)));
-            } else if (matcher.group(COMMENT) != null) {
-                tokens.add(new Token(COMMENT, matcher.group(COMMENT)));
             } else if (matcher.group(UNKNOWN) != null) {
                 tokens.add(new Token(UNKNOWN, matcher.group(UNKNOWN)));
             }

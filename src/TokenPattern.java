@@ -17,6 +17,12 @@ enum TokenPattern {
     CHARACTER_LITERAL(
         "(?<characterLiteral>'([^'\\\\]|\\\\.)')"
     ),
+    PREPROCESSOR(
+        "(?<preprocessor>^# *include *(<\\w+\\.h>|\"\\w+\\.h\")$)"
+    ),
+    COMMENT(
+        "(?<comment>//.*?$|/\\*[\\s\\S]*?\\*/)"
+    ),
     OPERATOR(
         "(?<operator>&&|(\\|\\|)|(\\+\\+)|--|(<<|>>|[-+*/%=!<>&^|~])=?)"
     ),
@@ -25,9 +31,6 @@ enum TokenPattern {
     ),
     WHITE_SPACE(
         "(?<whiteSpace>\\s+)"
-    ),
-    COMMENT(
-        "(?<comment>//.*?$|/\\*[\\s\\S]*?\\*/)"
     ),
     UNKNOWN(
         "(?<unknown>.+)"
@@ -56,6 +59,7 @@ enum TokenPattern {
             TokenPattern.NUMERIC_LITERAL    .getPattern(),
             TokenPattern.STRING_LITERAL     .getPattern(),
             TokenPattern.CHARACTER_LITERAL  .getPattern(),
+            TokenPattern.PREPROCESSOR       .getPattern(),
             TokenPattern.COMMENT            .getPattern(),
             TokenPattern.OPERATOR           .getPattern(),
             TokenPattern.SPECIAL_CHARACTER  .getPattern(),
