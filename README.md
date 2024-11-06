@@ -3,7 +3,7 @@
 ## A small compiler for a subset of the C language
 This project is a part of the university course "Compilers Design" as an application of all the learned concepts and theories.
 
-We are using Java programming language (**JDK 17**) to implement the phases of this compiler and the main IDE we are using Intellij.
+We are using Java programming language (**JDK 17**) to implement the phases of this compiler and the main IDE we are using is Intellij.
 
 ## Project Phases
 The phases include building:
