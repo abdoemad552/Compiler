@@ -17,7 +17,7 @@ public class Main {
 
     private static final String EOF = "__end__";
 
-    public static void main(String[] args) {
+    private static String getInputCode() {
         System.out.println("Enter code (enter `" + EOF + "` to finish input):");
 
         StringBuilder inputCode = new StringBuilder();
@@ -27,16 +27,18 @@ public class Main {
                 inputCode.append((char) inputChar);
                 if (
                     inputCode.length() >= EOF.length() &&
-                    inputCode.substring(inputCode.length() - EOF.length()).equals(EOF)
+                        inputCode.substring(inputCode.length() - EOF.length()).equals(EOF)
                 ) break;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Pattern pattern = TokenPattern.getAllInOnePattern();
-        Matcher matcher = pattern.matcher(
-            inputCode.substring(0, inputCode.length() - EOF.length()));
+        return inputCode.substring(0, inputCode.length() - EOF.length());
+    }
+
+    private static List<Token> tokenize(String inputCode) {
+        Matcher matcher = TokenPattern.getAllInOnePattern().matcher(inputCode);
 
         List<Token> tokens = new ArrayList<>();
         while (matcher.find()) {
@@ -65,9 +67,17 @@ public class Main {
             }
         }
 
+        return tokens;
+    }
+
+    public static void main(String[] args) {
+        String inputCode = getInputCode();
+        List<Token> tokens = tokenize(inputCode);
         for (Token token : tokens) {
             if (token.getName().equals(WHITE_SPACE)) continue;
             System.out.println(token);
         }
+
+        //TODO: Take this list of tokens to the next stage which is parsing...
     }
 }
