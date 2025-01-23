@@ -1,18 +1,18 @@
 class Token {
-    private String name;
+    private String group;
     private String value;
 
     public Token(String name, String value) {
-        this.name = name;
+        this.group = name;
         this.value = value;
     }
 
-    public String getName() {
-        return name;
+    public String getGroup() {
+        return group;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGroup(String name) {
+        this.group = name;
     }
 
     public String getValue() {
@@ -25,6 +25,6 @@ class Token {
 
     @Override
     public String toString() {
-        return String.format("<%s, `%s`>", this.name, this.value);
+        return String.format("<%s, `%s`>", this.group, this.value);
     }
 }
